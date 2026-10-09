@@ -1,44 +1,33 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8">
+<html lang="ko">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>업데이트</title>
+<title>업데이트 · AI 안전 연구</title>
+<meta name="description" content="AI 안전 연구 논문·벤치마크·연구 해설을 주제 지도와 위험 분야·언어로 정리한 목록">
+<meta property="og:title" content="업데이트 · AI 안전 연구">
+<meta property="og:description" content="AI 안전 연구 논문·벤치마크·연구 해설을 주제 지도와 위험 분야·언어로 정리한 목록">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://songkyungho.github.io/ai-safety-research/log.html">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23f4f2eb'/><path d='M10 22 L16 10 L22 22' stroke='%23be123c' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/><circle cx='10' cy='22' r='3.2' fill='%23be123c'/><circle cx='22' cy='22' r='3.2' fill='%23be123c'/><circle cx='16' cy='10' r='3.2' fill='%23be123c'/></svg>">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<meta name="description" content="AI 안전 연구 논문·벤치마크·연구 해설을 주제 지도와 위험 분야·언어로 정리한 목록">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root { color-scheme: light; }
-* { box-sizing: border-box; }
-body { margin: 0; }
 
+<style>
 :root {
   color-scheme: light;
-  --ink: #243044;
-  --ink-muted: #3a4658;
-  --text-muted: #5c6670;
-  --text-primary: #243044;
-  --text-secondary: #3a4658;
-  --plane: #f4f2eb;
-  --surface-1: #fffcf6;
-  --surface-2: #f7f4ec;
-  --surface-pearl: #fffcf6;
-  --hairline: #ddd6c8;
-  --border: #ddd6c8;
-  --gridline: #ebe6da;
-  --baseline: #ddd6c8;
-  --accent: #c45c48;
-  --accent-focus: #3a5270;
-  --navy: #3a5270;
-  --navy-2: #4a6584;
-  --gold: #d4a45a;
-  --gold-strong: #e0b56e;
-  --on-navy: #f4f2eb;
-  --on-navy-muted: #c5ced8;
-  --sage: #3f5340;
-  --on-dark: #f4f2eb;
+  --ink: #243044; --ink-muted: #3a4658; --text-muted: #5c6670;
+  --text-primary: #243044; --text-secondary: #3a4658;
+  --plane: #f4f2eb; --surface-1: #fffcf6; --surface-2: #f7f4ec; --surface-pearl: #fffcf6;
+  --hairline: #ddd6c8; --border: #ddd6c8; --gridline: #ebe6da; --baseline: #ddd6c8;
+  --accent: #c45c48; --accent-focus: #5a3550;
+  --navy: #5a3550; --navy-2: #6c4562; --gold: #d4a45a; --gold-strong: #e0b56e;
+  --on-navy: #f4f2eb; --on-navy-muted: #ddc9d6; --sage: #3f5340; --on-dark: #f4f2eb;
 }
+
 * { box-sizing: border-box; }
 html { font-size: 16px; overflow-x: clip; }
 body {
@@ -51,6 +40,8 @@ body {
   line-height: 1.7;
   overflow-x: clip;
 }
+a { color: var(--sage); }
+a:hover { color: var(--accent); }
 .viz-root { min-height: 100vh; background: var(--plane); color: var(--ink); overflow-x: clip; }
 .global-nav {
   position: sticky; top: 0; z-index: 40;
@@ -83,6 +74,11 @@ header.page-head h1 {
   font-size: 1.6rem; margin: 0 0 4px; font-weight: 700; letter-spacing: -0.01em;
   line-height: 1.35;
 }
+header.page-head .title-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin: 0 0 4px; }
+header.page-head .title-row h1 { margin: 0; }
+a.cta-btn { display: inline-block; background: var(--gold); color: var(--navy); text-decoration: none;
+  padding: 2px 10px; border-radius: 999px; font-size: 0.82rem; font-weight: 600; }
+a.cta-btn:hover { background: var(--gold-strong); color: var(--navy); }
 header.page-head .tagline {
   margin: 0; font-size: 0.95rem; color: var(--on-navy-muted); line-height: 1.55;
   max-width: 48em;
@@ -134,17 +130,14 @@ header.page-head .tagline a:hover { color: var(--gold); }
 .site-footer a { color: var(--on-navy-muted); }
 .site-footer a:hover { color: var(--gold); }
 .org-flag { font-style: normal; font-size: 1.05em; line-height: 1; margin-right: 4px; }
-
-
-/* 지면 토큰은 ui_common.NAV_CSS(:root) — 라이트 전용, 동향과 같은 시리즈·살짝 식힌 팔레트 */
+/* 지면 토큰·전역 메뉴·머리띠·검색창·바닥글은 ai-safety-common/aisafety_common/chrome.py(BASE_CSS·tokens_css).
+   여기는 라이브러리에서 가져온 목록 부품(타임라인·카드·칩 필터·배지·히트맵)만 둔다. */
 .viz-root {
   background: var(--plane);
   color: var(--ink);
   font-family: "IBM Plex Sans KR", "IBM Plex Sans", -apple-system, BlinkMacSystemFont,
     "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
 }
-a { color: var(--sage, #3f5340); }
-a:hover { color: var(--accent); }
 .timeline { position: relative; padding-left: 20px; }
 .timeline::before { content: ""; position: absolute; left: 4px; top: 6px; bottom: 6px; width: 2px; background: var(--baseline); }
 .month-current, .archive-month { margin-bottom: 8px; scroll-margin-top: 56px; }
@@ -450,12 +443,6 @@ button.filter-chip.topic-chip .n {
 
 
 
-header.page-head .title-row { display:flex; flex-wrap:wrap; align-items:center; gap:6px 14px; margin:0 0 4px }
-header.page-head .title-row h1 { margin:0 }
-a.cta-btn { display:inline-block; background:var(--gold); color:var(--navy); text-decoration:none;
-  padding:2px 9px; border-radius:999px; font-size:.82rem; font-weight:600 }
-a.cta-btn:hover { background:var(--gold-strong); color:var(--navy) }
-:root { --navy: #5a3550; --navy-2: #6c4562; --on-navy-muted: #ddc9d6; }
 .lede-stats { display:flex; flex-wrap:wrap; gap:6px 18px; margin:2px 0 22px; color:var(--text-secondary); font-size:.85rem }
 .lede-stats b { color:var(--ink); font-variant-numeric:tabular-nums }
 .sec { margin:0 0 30px; padding-bottom:22px; border-bottom:1px solid var(--hairline) }
@@ -608,18 +595,25 @@ i.ring { background:transparent !important; border:2px solid #eb6834; width:10px
 .about-wrap dl.tiers i { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:6px }
 .gchips { display:grid; gap:4px; font-size:.92rem; margin:.4rem 0 .8rem }
 .gchips span i { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px }
+
 .log-entry { border-bottom:1px solid var(--hairline); padding:14px 0 } .log-entry:last-child { border-bottom:0 }
 .log-meta { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:6px }
 .log-date { font-variant-numeric:tabular-nums; font-size:12px; color:var(--text-muted) }
 .log-tag { font-size:11px; color:var(--text-muted); border:1px solid var(--hairline); border-radius:999px; padding:1px 8px }
 .log-entry h3 { font-size:1rem; margin:0 0 6px; font-weight:700 } .log-entry p { margin:0; font-size:.93rem; line-height:1.6 }
-</style></head>
-<body><div class="viz-root">
+
+</style>
+</head>
+<body>
+<div class="viz-root">
 <nav class="global-nav" aria-label="사이트"><div class="global-nav-inner"><div class="global-nav-left"><a href="https://songkyungho.github.io/ai-safety-digest/" target="_blank" rel="noopener noreferrer">AI 안전 다이제스트</a><a href="https://songkyungho.github.io/ai-safety-library/" target="_blank" rel="noopener noreferrer">AI 안전 라이브러리</a><a class="nav-current" href="index.html">AI 안전 연구</a><a href="https://songkyungho.github.io/ai-safety-glossary/" target="_blank" rel="noopener noreferrer">AI 안전 용어집</a><a href="https://songkyungho.github.io/ai-safety-board/" target="_blank" rel="noopener noreferrer">AI 안전 알림판</a></div><div class="global-nav-right"><a href="about.html">소개</a><span class="nav-current">업데이트</span></div></div></nav>
 <header class="page-head"><div class="page-head-inner"><div class="title-row"><h1>업데이트</h1><a class="cta-btn" href="index.html">← AI 안전 연구</a></div><p class="tagline">AI 안전 연구 by 인공지능안전연구소 <a href="https://songkyungho.github.io" target="_blank" rel="noopener">송경호</a></p></div></header>
-<div class="wrap">
+<main class="wrap">
 <div class="about-wrap"><p class="about-meta">매일 쌓이는 수집 갱신은 빼고, 사이트 구조·분류·지도가 바뀐 지점만 적습니다. 최신이 위입니다.</p><section><h2>2026년 10월</h2><article class="log-entry"><div class="log-meta"><time class="log-date" datetime="2026-10-05">2026-10-05</time><span class="log-tag">사이트</span></div><h3>하위 페이지 이름을 &#x27;AI 안전 연구 기관 및 연구자&#x27;로 바꾼다</h3><p>성좌는 오른쪽 상자 없이 전체 너비를 쓰고, 기관·연구자 표는 구분·유형·국가·이름 순으로 놓는다. 국가에는 국기를, 유형(대학·기업·연구소·비영리·정부·공공·의료)에는 색과 이모지를 붙였다.</p></article><article class="log-entry"><div class="log-meta"><time class="log-date" datetime="2026-10-04">2026-10-04</time><span class="log-tag">데이터</span><span class="log-tag">분류</span></div><h3>역량 벤치마크를 함께 싣는다</h3><p>리더보드와 시스템 카드에 자주 나오는 벤치마크를 시드로 정리해 넣었다. Cybench·WMDP·RE-Bench 같은 위험 역량 벤치와 MMLU·GPQA·KMMLU 같은 일반 역량 벤치다. 일반 역량 벤치는 안전 연구는 아니지만 모델 수준의 기준선이고 언어판 계보(MMLU → MMMLU·Global-MMLU·KMMLU 등)를 보여 주는 데 쓴다. 목록에서 &#x27;벤치 종류&#x27;(안전 벤치·위험 역량·일반 역량)로 거를 수 있다.</p></article><article class="log-entry"><div class="log-meta"><time class="log-date" datetime="2026-10-03">2026-10-03</time><span class="log-tag">데이터</span><span class="log-tag">사이트</span></div><h3>연구 논문과 연구기관 글을 다이제스트에서 넘겨받는다</h3><p>arXiv·OpenAlex·Hugging Face Daily Papers 논문 수집을 이쪽으로 옮겼고, METR·RAND·Redwood·CSET 같은 연구기관 글도 다이제스트에는 더 싣지 않는다. 뉴스는 다이제스트, 정책 문서는 라이브러리, 연구는 여기서 본다.</p></article><article class="log-entry"><div class="log-meta"><time class="log-date" datetime="2026-10-02">2026-10-02</time><span class="log-tag">사이트</span><span class="log-tag">데이터</span></div><h3>연구기관 및 연구자 페이지를 연다</h3><p>연구를 쓴 기관과 연구자를 연구 별자리 위, 자기 연구들의 평균 자리에 놓은 성좌로 보여 준다. 크기는 연구 수, 색은 가장 많이 다룬 위험 분야, 선은 함께 쓴 연구(공저) 2건 이상이다. 저자·소속은 OpenAlex에서 받고, 비어 있는 소속은 논문 첫 페이지에서 언어 모델이 읽어 채운다. 기관 블로그 글은 그 기관을 저자로 센다.</p></article><article class="log-entry"><div class="log-meta"><time class="log-date" datetime="2026-10-02">2026-10-02</time><span class="log-tag">지도</span></div><h3>주제를 골라도 다른 별을 지우지 않는다</h3><p>주제 이름을 누르면 그 주제의 별만 더 크고 밝아지고, 나머지 별은 흐리게 남는다. 위험 분야 등 다른 조건에서 빠진 별만 거의 지운다.</p></article><article class="log-entry"><div class="log-meta"><time class="log-date" datetime="2026-10-02">2026-10-02</time><span class="log-tag">사이트</span></div><h3>벤치마크 × 언어 구축 표에 단계 이름을 쓴다</h3><p>행을 언어 구축 단계(L0 원문 ~ L4 현지 특화)로, 열을 위험 분야로 바꿨다. 원 크기는 벤치마크 수, 주황 테두리는 한국어 데이터다.</p></article><article class="log-entry"><div class="log-meta"><time class="log-date" datetime="2026-10-02">2026-10-02</time><span class="log-tag">지도</span></div><h3>별자리 배치를 UMAP에서 출발한 t-SNE로 바꾼다</h3><p>제목·요약 임베딩을 UMAP으로 먼저 펼친 자리에서 t-SNE를 시작한다. 지도와 무관한 지표로 비교했을 때 주제 사이 원근은 이전 배치와 같고, 가까운 이웃 보존은 UMAP보다 낫다. 새 연구는 매일 다시 그리지 않고 가까운 이웃 자리에 끼워 넣는다.</p></article><article class="log-entry"><div class="log-meta"><time class="log-date" datetime="2026-10-02">2026-10-02</time><span class="log-tag">사이트</span><span class="log-tag">지도</span></div><h3>연구 별자리: 지도·주제 요약·원본→다른 언어판 세 상자</h3><p>별 하나가 연구 하나인 밤하늘 지도로 바꾸고, 오른쪽에 고른 주제의 위험 분야·연구 유형·벤치마크×언어 구성을, 아래에 원본 벤치마크와 그 다른 언어판을 한 줄씩 둔다. 언어판 줄에는 파생판들이 다루는 위험 분야를 리본으로 붙인다.</p></article><article class="log-entry"><div class="log-meta"><time class="log-date" datetime="2026-10-02">2026-10-02</time><span class="log-tag">분류</span></div><h3>언어 구축 단계 이름을 정한다</h3><p>L0 원문, L1 기계번역, L2 전문 번역, L3 트랜스크리에이션(문화 소재를 그 언어권 맥락으로 치환), L4 현지 특화(그 언어권 고유 이슈·원천으로 새로 만듦).</p></article><article class="log-entry"><div class="log-meta"><time class="log-date" datetime="2026-10-02">2026-10-02</time><span class="log-tag">사이트</span></div><h3>AI 안전 연구를 한 페이지로 만든다</h3><p>AI 안전 다이제스트가 모은 연구 글과 따로 찾은 한국어·다국어 벤치마크를 모아, 연구 지도와 위험 분야·연구 유형·언어 구축 필터, 월별 목록을 한 페이지에 둔다. 같은 연구를 다룬 해설·보도는 연구 카드 하나로 묶는다.</p></article><article class="log-entry"><div class="log-meta"><time class="log-date" datetime="2026-10-02">2026-10-02</time><span class="log-tag">데이터</span></div><h3>한국어·다국어 벤치마크 수집원을 더한다</h3><p>다이제스트에 들어오지 않는 한국어 벤치마크를 찾으려고 OpenAlex 논문 검색과 Hugging Face 데이터셋(한국어 태그)을 함께 본다. 같은 연구의 블로그 글과 논문은 arXiv·DOI 링크로 묶는다.</p></article><article class="log-entry"><div class="log-meta"><time class="log-date" datetime="2026-10-02">2026-10-02</time><span class="log-tag">분류</span><span class="log-tag">데이터</span></div><h3>두 언어 모델로 분류하고 본문으로 다시 확인한다</h3><p>위험 분야·연구 유형·언어·모달리티를 서로 다른 두 모델이 따로 붙이고, 본문을 구할 수 있는 연구는 본문으로 다시 붙인다. 공개 목록에는 AI 안전과 관련이 충분하다고 본 연구만 싣는다.</p></article></section></div>
-</div>
+</main>
 <footer class="site-footer"><div class="footer-inner">만든 사람: 인공지능안전연구소 <a href="https://songkyungho.github.io" target="_blank" rel="noopener">송경호</a> · 문의/오류제보: <a href="mailto:songkyungho@etri.re.kr">songkyungho@etri.re.kr</a><br>
 AI 안전 다이제스트가 모은 연구와 따로 찾은 한국어·다국어 벤치마크를 모았습니다. 분류·주제 이름·한국어 요약은 언어 모델이 자동으로 붙였고 틀릴 수 있습니다. 초록과 본문은 싣지 않으니 원문은 링크에서 보세요.</div></footer>
-</div></body></html>
+</div>
+
+</body>
+</html>
